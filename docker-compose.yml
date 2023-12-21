@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  api:
+    build: ./api
+    container_name: api_c
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+  myblog:
+    build: ./myblog
+    container_name: myblog_c
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./myblog:/app # This volume is related to the myblog service
+      - /app/node_modules
